@@ -29,8 +29,8 @@ To get this application up and running locally, follow the instructions below.
 
 1.  **Clone the Repository**:
 ```bash
-git clone https://github.com/your-username/coacher-app.git
-cd coacher-app
+git clone https://github.com/devmeireles/rails-gym-gemini.git
+cd rails-gym-gemini
 ```
 
 2. **Install Dependencies**:
@@ -64,16 +64,24 @@ rails server
 
 This endpoint generates a personalized workout plan based on the user's input. The user must provide information regarding their fitness goals, experience level, and any other preferences.
 
-#### Inputs
-
--   `user_input`: A string that describes the user's workout requirements, such as goals, experience, and specific needs.
+#### Request
 
 ```bash
 POST /plans/generate/workout
 Content-Type: application/json
 
 {
-  "user_input": "I want a workout plan for muscle gain, with intermediate experience."
+  "plan_type": "workout",
+  "plan_data": {
+    "weight": 80,
+    "height": 1.85,
+    "age": 30,
+    "sex": "Male",
+    "activity_level": "Moderate exercise (4-6 days/week)",
+    "goal": "Muscle gain",
+    "experience": "Intermediate",
+    "preferred_exercise_type": "Push-Pull-Legs"
+  }
 }
 ```
 
@@ -121,18 +129,21 @@ Content-Type: application/json
 
 This endpoint generates a personalized diet plan based on the user's input. The user provides details such as weight, height, age, sex, activity level, and any specific dietary preferences.
 
-#### Inputs
-
--   `user_input`: A string that describes the user's dietary requirements (e.g., goals like weight loss or muscle gain, activity level, preferences, etc.).
-
-#### Example Request
+#### Request
 
 ```bash
 POST /plans/generate/diet
 Content-Type: application/json
 
 {
-  "user_input": "I am 30 years old, 80kg, 180cm, moderately active, and I want to lose fat."
+  "plan_type": "diet",
+  "plan_data": {
+    "weight": 80,
+    "height": 1.92,
+    "age": 31,
+    "sex": "Male",
+    "activity_level": "Moderate exercise (4-6 days/week)"
+  }
 }
 ```
 
