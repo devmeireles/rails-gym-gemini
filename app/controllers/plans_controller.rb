@@ -47,7 +47,7 @@ class PlansController < ApplicationController
     when "diet"
       %w[weight height age sex activity_level]
     when "workout"
-      %w[goal experience preferred_exercise_type]
+      %w[goal experience preferred_exercise_type weight height age sex activity_level]
     else
       return false
     end
